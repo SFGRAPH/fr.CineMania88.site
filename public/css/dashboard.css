@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    list-style: none; 
+}
+
+html, body {
+
+    min-width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(to bottom left, #861a22 , #000000);
+    background: -webkit-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Chrome et Safari */
+    background: -moz-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Firefox */
+    background: -o-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Opera */
+    background: linear-gradient(to bottom left, #861a22 , #000000); /* Pour les navigateurs modernes */
+
+    font-family: 'Orbitron', sans-serif !important;
+    color: #fbfbfb !important;
+
+
+}
+
+main{
+
+    width: 100vw;
+}
+
+a {
+    color: #fbfbfb !important;
+}
+
+.logoContainer {
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+
+    width: 350px;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.logoLogin {
+
+    width: 400px;
+    height: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    filter: drop-shadow(15px 15px 15px #000000a8);
+}
+
+
+
+.container {
+
+    margin-top:50px !important;
+
+}
+
+#loginContainer {
+
+    width: 25% ;
+    height: 50%;
+    padding:70px;
+    margin-top: 0 !important;
+    background-color: #240608;
+    border: 3px solid #fbfbfb;
+    border-radius: 15px;
+    box-shadow: 30px 30px 40px #000000;
+}
+
+.formProduct {
+
+    height: 100% !important;
+}
+
+.btn-primary {
+
+    width: 330px !important;
+    margin: 10px !important;
+    background-color: #fbfbfb !important;
+    border: 2px solid #430B0F !important;
+    border-radius: 8px !important;
+    color: #430B0F !important;
+    font-weight: 700 !important;
+}
+
+.nav {
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.table {
+
+    color: #fbfbfb !important;
+}
+
+
+th {
+
+    font-size: 20px;
+}
+
+.orderTh {
+
+    font-size: 16px;
+}
+
+th, td, tr {
+    text-align: center !important; /* Aligns text horizontally */
+    vertical-align: middle !important; /* Aligns text vertically */
+}
+
+#enCours, #complete, #expedie {
+
+    width: 180px !important;
+    font-size: 12px !important;
+}
+
+.buttonContainer {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submitLogin{
+
+    width: 180px !important;
+}
+
+footer {
+    height: 90px !important;
+    display: flex !important;
+    justify-content: center !important;
+    position: relative
+}
+
+footer p {
+
+    position:absolute ;
+    bottom: 5px;
+    margin-bottom: 0 !important;
+}
+
+.input-group {
+
+    align-items: center !important;
+}
+
+
+.menuLeft {
+
+    width: 25%;
+}
+
+.menuRight {
+
+    width: 75%;
+}
+.mainContainer {
+
+    display: flex;
+    margin: auto;
+}
+
+select {
+
+    height: 35px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.contenuContainer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.card, #orderItems {
+
+    color: #430B0F !important;
+}
+
+
+@media (min-width: 1440px) {
+    #containerOrders {
+        width: 90% !important;
+        /* max-width: 1980px !important; */
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    #dashboardContainer {
+        width: 90% !important;
+        max-width: 1980px !important;
+
+    }
+
+
+}
