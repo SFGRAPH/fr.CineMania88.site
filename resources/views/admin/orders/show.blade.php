@@ -11,7 +11,17 @@
         <div class="card-body">
             <p><strong>Status:</strong> {{ $order->status }}</p>
             <p><strong>Total:</strong> {{ $order->total }}</p>
-            <p><strong>Order Date:</strong> {{ $order->created_at->format('d/m/Y') }}</p>
+            <p><strong>Date de commande:</strong> {{ $order->created_at->format('d/m/Y') }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            Informations client
+        </div>
+        <div class="card-body">
+            <p><strong>Nom:</strong> {{ $order->user->name }}</p>
+            <p><strong>Email:</strong> {{ $order->user->email }}</p>
         </div>
     </div>
 
@@ -22,10 +32,10 @@
         <div class="card-body">
             @if ($order->billingAddress)
                 <p>{{ $order->billingAddress->address }}</p>
-                <p>{{ $order->billingAddress->city }}, {{ $order->billingAddress->state }} {{ $order->billingAddress->postal_code }}</p>
+                <p>{{ $order->billingAddress->city }}, {{ $order->billingAddress->postal_code }}</p>
                 <p>{{ $order->billingAddress->country }}</p>
             @else
-                <p>No billing address provided.</p>
+                <p>Aucune adresse de facturation fournie.</p>
             @endif
         </div>
     </div>
@@ -37,25 +47,25 @@
         <div class="card-body">
             @if ($order->shippingAddress)
                 <p>{{ $order->shippingAddress->address }}</p>
-                <p>{{ $order->shippingAddress->city }}, {{ $order->shippingAddress->state }} {{ $order->shippingAddress->postal_code }}</p>
+                <p>{{ $order->shippingAddress->city }}, {{ $order->shippingAddress->postal_code }}</p>
                 <p>{{ $order->shippingAddress->country }}</p>
             @else
-                <p>No shipping address provided.</p>
+                <p>Aucune adresse de livraison fournie.</p>
             @endif
         </div>
     </div>
 
     <div class="card mb-3">
         <div class="card-header">
-            Produitss
+            Produits
         </div>
         <div class="card-body">
             <table id="orderItems" class="table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +73,7 @@
                     <tr>
                         <td>{{ $item->product->name }}</td>
                         <td>{{ $item->quantity }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->price }} €</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -73,6 +83,5 @@
 </div>
 <a href="{{ route('admin.orders.index') }}" class="btn btn-primary">Retour</a>
 @endsection
-
 
 

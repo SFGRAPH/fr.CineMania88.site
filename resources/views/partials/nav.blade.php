@@ -38,24 +38,7 @@
                     <li id="nav-11" class="slide-out-11 center">
                         <a href="" class="center">CONTACT</a>
                     </li>
-                    <!-- <li id="nav-12" class="slide-out-12 center">
-                        <div class="ligne"></div>
-                    </li>    
-                    @guest
-                        <li id="nav-13" class="slide-out-13 center"><a href="">CONNEXION</a></li>
-                        <li id="nav-14" class="slide-out-14 center"><a href="">INSCRIPTION</a></li>
-                    @else
-                        <li id="nav-13" class="slide-out-15 center">
-                            <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                DÉCONNEXION
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    @endguest -->
+ 
                 </ul>
             </nav>
 

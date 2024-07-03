@@ -410,6 +410,9 @@ html, body {
     width: 100vw;
     position: fixed;
     z-index: 3;
+    display: flex;
+    justify-content: center;
+
   }
 
   .logoContainer a {
@@ -433,12 +436,13 @@ html, body {
 
   .logo{
 
-      width: 450px;
+      width: 350px;
       height: auto;
       margin-top: 50px;
       margin-bottom: 50px;
+      margin-left: 180px;
       z-index: 5;
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.2s ease-in-out;
   }
 
 
@@ -454,4 +458,37 @@ html, body {
     width: 100%;
     border:1px solid #fbfbfb;
     margin: auto;
+}
+
+.loginContainer{
+
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 5;
+}
+
+.loginContainer a {
+
+  margin: 10px;
+}
+
+.loginContainer a:hover {
+
+  text-decoration: none;
+  color: #AF1B1D;
+}
+
+.logout {
+
+  background: transparent !important;
+  border: none;
+  margin-top: 10px;
+  color: #fbfbfb;
+  font-weight: 500;
+}
+
+.logout:hover{
+
+  text-decoration: underline;
 }

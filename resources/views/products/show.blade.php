@@ -40,11 +40,17 @@
                 @if($product->saga)
                 <p><strong>Saga :</strong> {{ $product->saga->name }}</p>
                 @endif
+
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Ajouter au Panier</button>
+                </form>
         </div>        
     </div>
     <a href="{{ route('categories.show', $product->category->id) }}" class="btn btn-primary">Retour à la catégorie</a>
 </div>
 @endsection
+
 
 
 

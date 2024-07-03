@@ -1,3 +1,21 @@
+html, body {
+
+    width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: linear-gradient(to bottom left, #861a22 , #000000);
+    background: -webkit-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Chrome et Safari */
+    background: -moz-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Firefox */
+    background: -o-linear-gradient(to bottom left, #861a22 , #000000); /* Pour les anciens navigateurs Opera */
+    background: linear-gradient(to bottom left, #861a22 , #000000); /* Pour les navigateurs modernes */
+
+    font-family: 'Orbitron', sans-serif !important;
+    color: #fbfbfb !important;
+
+
+}
+
+
 
 /***********************/
 /*     css Carousel    */
@@ -92,8 +110,28 @@
 }
 
 /*********************************/
-/*     css Carousel Catégorie    */
+/*     interfaceUser    */
 /*********************************/
+
+#userDashboard, #panierContainer {
+
+    margin-top: 250px !important;
+    color: #fbfbfb !important;
+}
+
+#panierContainer table {
+
+    color: #fbfbfb;
+}
+
+.logoDashboard {
+
+    width: 300px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 100px;
+
+}
 
 
 

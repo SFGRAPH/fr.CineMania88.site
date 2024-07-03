@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="logoContainer">
-        <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo"></a>
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
     </div>
 
     <div class="carousel">

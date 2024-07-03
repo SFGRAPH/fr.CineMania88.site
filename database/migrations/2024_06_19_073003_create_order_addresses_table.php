@@ -11,12 +11,12 @@ class CreateOrderAddressesTable extends Migration
         Schema::create('order_addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
-            $table->string('address_type');
-            $table->string('address');
+            $table->string('address_type'); // 'billing' or 'shipping'
+            $table->string('address'); // Numéro et rue
             $table->string('city');
-            $table->string('state');
             $table->string('postal_code');
-            $table->string('country');
+            $table->string('department')->nullable(); // Département (optionnel)
+            $table->string('country'); // Pays
             $table->timestamps();
         });
     }
@@ -26,4 +26,3 @@ class CreateOrderAddressesTable extends Migration
         Schema::dropIfExists('order_addresses');
     }
 }
-

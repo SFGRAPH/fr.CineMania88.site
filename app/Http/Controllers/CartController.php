@@ -3,31 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
-use App\Models\CartItem;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = CartItem::where('user_id', Auth::id())->get();
-        return view('cart.index', compact('cartItems'));
+        $cart = session()->get('cart', []);
+
+        $cartItems = [];
+        foreach ($cart as $productId => $quantity) {
+            $product = Product::find($productId);
+            if ($product) {
+                $cartItems[] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $quantity,
+                    'stock' => $product->stock,
+                ];
+            }
+        }
+
+        return view('cart.index', ['cartItems' => $cartItems]);
     }
 
-    public function addToCart($productId)
+    public function add(Product $product)
     {
-        $cartItem = new CartItem();
-        $cartItem->user_id = Auth::id();
-        $cartItem->product_id = $productId;
-        $cartItem->quantity = 1;
-        $cartItem->save();
+        $cart = session()->get('cart', []);
 
-        return redirect()->route('cart.index');
+        if (isset($cart[$product->id])) {
+            if ($cart[$product->id] < $product->stock) {
+                $cart[$product->id]++;
+            } else {
+                return redirect()->route('cart.index')->with('error', 'Quantité maximale atteinte pour ce produit.');
+            }
+        } else {
+            $cart[$product->id] = 1;
+        }
+
+        session()->put('cart', $cart);
+
+        return redirect()->route('cart.index')->with('success', 'Produit ajouté au panier.');
     }
 
-    public function buyNow($productId)
+    public function remove(Product $product)
     {
-        // Logique pour l'achat direct
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$product->id])) {
+            unset($cart[$product->id]);
+        }
+
+        session()->put('cart', $cart);
+
+        return redirect()->route('cart.index')->with('success', 'Produit retiré du panier.');
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $cart = session()->get('cart', []);
+        $quantity = $request->input('quantity');
+
+        if ($quantity > $product->stock) {
+            return redirect()->route('cart.index')->with('error', 'Quantité demandée supérieure au stock disponible.');
+        }
+
+        if (isset($cart[$product->id])) {
+            $cart[$product->id] = $quantity;
+        }
+
+        session()->put('cart', $cart);
+
+        return redirect()->route('cart.index')->with('success', 'Quantité mise à jour.');
     }
 }
