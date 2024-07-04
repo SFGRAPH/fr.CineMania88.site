@@ -30,4 +30,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'sumup' => [
+        'access_token' => env('SUMUP_ACCESS_TOKEN'),
+        'merchant_code' => env('SUMUP_MERCHANT_CODE'),
+        'pay_to_email' => env('SUMUP_PAY_TO_EMAIL'),
+    ],
+
+
+
 ];

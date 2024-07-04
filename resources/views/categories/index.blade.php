@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('title', 'Catégorie - ' . $category->name)
 
@@ -22,4 +22,4 @@
     </div>
 </div>
 @endsection
-
+ -->

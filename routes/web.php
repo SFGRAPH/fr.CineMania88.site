@@ -37,6 +37,7 @@ Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/payment/{paymentLink}', [CheckoutController::class, 'payment'])->name('checkout.payment');
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/account', [HomeController::class, 'account'])->name('account');
 });

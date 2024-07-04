@@ -20,8 +20,6 @@ class ReturnController extends Controller
         return view('admin.returns.index', compact('returns'));
     }
 
-
-
     private function getReturnedQuantities($orderId)
     {
         $returnedQuantities = [];
@@ -39,17 +37,11 @@ class ReturnController extends Controller
         return $returnedQuantities;
     }
 
-
-
-
     public function create()
     {
         $orders = Order::where('status', '!=', 'cancelled')->with('items.product')->get();
         return view('admin.returns.create', compact('orders'));
     }
-
-    
-    
 
     public function store(Request $request)
     {
@@ -87,19 +79,10 @@ class ReturnController extends Controller
         return redirect()->route('admin.returns.index')->with('success', 'Return created successfully.');
     }
 
-
-
-    
-
     public function show(ReturnProduct $return)
     {
         return view('admin.returns.show', compact('return'));
     }
-
-
-
-
-
 
     public function edit(ReturnProduct $return)
     {
@@ -107,20 +90,11 @@ class ReturnController extends Controller
         return view('admin.returns.edit', compact('return', 'orders'));
     }
 
-
-
-
-    
-
     public function update(Request $request, ReturnProduct $return)
     {
         $return->update($request->all());
         return redirect()->route('admin.returns.index')->with('success', 'Return updated successfully.');
     }
-
-
-
-
 
     public function destroy(ReturnProduct $return)
     {
@@ -128,15 +102,15 @@ class ReturnController extends Controller
         return redirect()->route('admin.returns.index')->with('success', 'Return deleted successfully.');
     }
 
-
-
-
-
-
     public function approve(ReturnProduct $return)
     {
         foreach ($return->products as $product) {
             $product->increment('stock', $product->pivot->quantity);
+
+            // Check if the product was previously not visible and has stock > 0
+            if ($product->stock > 0 && !$product->visible) {
+                $product->update(['visible' => true]);
+            }
         }
     
         $return->update(['status' => 'approved']);
@@ -146,11 +120,6 @@ class ReturnController extends Controller
         return redirect()->route('admin.returns.index')->with('success', 'Return approved successfully.');
     }
 
-
-
-
-    
-
     public function reject(ReturnProduct $return)
     {
         $return->update(['status' => 'rejected']);
@@ -159,10 +128,6 @@ class ReturnController extends Controller
     
         return redirect()->route('admin.returns.index')->with('success', 'Return rejected successfully.');
     }
-
-
-
-
 
     public function refund($id)
     {
@@ -185,15 +150,9 @@ class ReturnController extends Controller
         return redirect()->route('admin.returns.index')->with('success', 'Remboursement validé avec succès.');
     }
 
-
-
-
-
-
     public function archived()
     {
         $returns = ReturnProduct::where('status', 'refunded')->get();
         return view('admin.returns.archived', compact('returns'));
     }
-    
 }
